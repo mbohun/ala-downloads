@@ -1,0 +1,25 @@
+language: groovy
+
+jdk:
+  - oraclejdk7
+
+branches:
+  only:
+    - master
+
+before_install:
+- rm -rf ~/.gvm
+- curl -s get.gvmtool.net > ~/install_gvm.sh
+- chmod 775 ~/install_gvm.sh
+- ~/install_gvm.sh
+- echo "gvm_auto_answer=true" > ~/.gvm/etc/config
+- source ~/.gvm/bin/gvm-init.sh
+- gvm install grails $GRAILS_VERSION || true
+
+script: "grails clean-all && grails refresh-dependencies --non-interactive && grails maven-deploy --repository=nectar-nexus-repo-snapshot"
+
+env:
+  global:
+    - GRAILS_VERSION=2.3.11
+    - secure: "KDyiRXFOFbWocQSue/7zGgQnUaDZvJaz2yS47WHeZ36TvqCnWt7jk7vSGb9RMQS0laE3zE4WHhobH3USzVRssUK1lXyCk16/LBOn+vK0FEBhaeP72f/mp2Cd9b4IGm6XjGwsav4Kdi86imrJxbkb8KwA4GQVuWY3so7Zwc9ovNc="
+    - secure: "d8dXkMFJJfbkBMN/rcMRdiAQy1zASzTNiG/kG/z7QPXxucO7N04Z9yQelPzSOHuOMrfcuyNL/++R1AIRgf6IwnQUs3XHE0wZpyvxmKsJsLw2RDokpDzISFyyhiRpKyzErlJzJev9Kvf+sA2YG5yJSBj5gxR5o0F8JhHHrkckqDA="
