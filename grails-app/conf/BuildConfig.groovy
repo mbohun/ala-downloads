@@ -7,6 +7,8 @@ grails.project.target.level = 1.7
 grails.project.source.level = 1.7
 //grails.project.war.file = "target/ROOT##${appName}-${appVersion}-${new Date().format('yyyy_MM_dd-HH_mm')}.war"
 
+grails.project.groupId = "au.org.ala" // change this to alter the default package name and Maven publishing destination
+
 grails.project.fork = [
     // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
     //  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
